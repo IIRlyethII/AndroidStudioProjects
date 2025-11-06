@@ -6,7 +6,12 @@
 
 ---
 
-## 📱 **¿QUÚ TIENES AHORA?**
+## 📱 **¿QUÉ TIENES AHORA?**
+
+### ✅ **Revisar la carpeta con documentacion adjunta**
+- **📁 Ubicación**: `AndroidStudioProjects/.Documentos De Evaluacion`
+- **🧩 Firmware simplificado.zip**: Comprimido con los codigos del ESP32 simplficacos
+- **📝 SISTEMA_AUTH_PERSISTENTE.md**: Informacion de la autenticacion al ingresar una cuenta
 
 ### ✅ **Android App Completa**
 - **🏗️ Arquitectura Profesional**: Clean Architecture + MVVM + Hilt
@@ -14,12 +19,6 @@
 - **📊 Dashboard Completo**: Datos en tiempo real, gráficos, controles
 - **🧪 Testing Activity**: Interfaz dedicada para probar ESP32
 - **🔄 Dos Modos**: Simulación (Mock) y Hardware Real
-
-### ✅ **ESP32 Firmware Completo** 
-- **📁 Ubicación**: `C:\Users\rlyet\ESP32_AirQualityMonitor_TI3042\`
-- **🔌 Comunicación Bluetooth**: Protocolo JSON bidireccional
-- **🧪 Múltiples Versiones**: Arduino IDE, PlatformIO, Simulación Wokwi
-- **📟 Sensores**: MQ-135, DHT22, OLED, relays, buzzer
 
 ### ✅ **Sistema de Comunicación**
 - **RealBluetoothService**: Servicio Android para ESP32 real ✅ IMPLEMENTADO
@@ -62,42 +61,6 @@
 
 ---
 
-## 🔧 **INSTALACIÓN RÁPIDA**
-
-### **Para Android (Ya está listo):**
-```bash
-cd C:\Users\rlyet\AndroidStudioProjects\AirQualityMonitor\
-.\gradlew installDebug
-# Abre "ESP32 Testing Lab" en el teléfono
-```
-
-### **Para ESP32 (Si tienes hardware):**
-```bash
-1. Abrir VS Code
-2. Abrir carpeta: C:\Users\rlyet\ESP32_AirQualityMonitor_TI3042\
-3. Usar PlatformIO o Arduino IDE
-4. Subir código al ESP32
-5. Emparejar Bluetooth con Android
-```
-
----
-
-## 🎓 **PARA LA PRESENTACIÓN**
-
-### **🥇 Demo Recomendado (5 minutos)**
-1. **Mostrar app funcionando** (1 min) - Dashboard, datos cambiando
-2. **Cambiar entre modos** (1 min) - Simulación vs Real
-3. **Explicar arquitectura** (2 min) - Clean Architecture, IoT, Bluetooth
-4. **Testing en vivo** (1 min) - Comandos, logs, respuestas
-
-### **📊 Puntos Clave**
-- ✨ **Sistema IoT completo** - No solo app bonita
-- 🏗️ **Arquitectura profesional** - Código empresarial 
-- 🔄 **Dual mode** - Simulación + hardware real
-- 🧪 **Testing incluido** - Interfaz para demostrar todo
-- 📱 **UI moderna** - Material Design 3 actualizado
-
----
 
 ## 🐛 **Troubleshooting Rápido**
 
@@ -129,14 +92,6 @@ app/src/main/java/com/ti3042/airmonitor/
 ├── bluetooth/RealBluetoothService.kt    # ✅ NUEVO - Hardware real
 ├── testing/ESP32TestingActivity.kt      # ✅ NUEVO - Testing UI
 └── bluetooth/BluetoothManager.kt        # ✅ Actualizado - Manager
-```
-
-### **ESP32:**
-```
-C:\Users\rlyet\ESP32_AirQualityMonitor_TI3042\
-├── Wokwi_Simulation/ESP32_AirMonitor_Simulation_LEDs.ino  # Versión LEDs
-├── Arduino_Firmware/                                      # Versión sensores
-└── PlatformIO_Project/                                    # Versión pro
 ```
 
 ---
