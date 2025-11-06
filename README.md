@@ -254,7 +254,7 @@ git push origin feature/nueva-funcionalidad
 - [ ] 🔄 Sincronización multi-dispositivo
 - [ ] 📊 Exportación de reportes PDF
 
-### **💡 Futuro (v2.0)**
+### **💡 Futuro Probable (v2.0)**
 - [ ] 🤖 IA para predicción de calidad de aire
 - [ ] 🌍 Integración con APIs meteorológicas
 - [ ] 📱 Companion app para smartwatches
@@ -267,7 +267,7 @@ git push origin feature/nueva-funcionalidad
 **🎓 Proyecto:** Sistemas Distribuidos TI3042  
 **👤 Autor:** [IIRlyethII](https://github.com/IIRlyethII)  
 **📅 Fecha:** Noviembre 2025  
-**🏫 Institución:** [Tu Institución Educativa]  
+**🏫 Institución:** Inacap  
 
 ### **🎯 Objetivos de Aprendizaje Alcanzados**
 - ✅ Arquitectura de software escalable
@@ -283,8 +283,7 @@ git push origin feature/nueva-funcionalidad
 
 ### **🐛 Reportar Bugs**
 - 📝 [Issues en GitHub](https://github.com/IIRlyethII/AndroidStudioProjects/issues)
-- 📧 Email: [tu-email@ejemplo.com]
-- 💬 Discord: [Tu Discord#1234]
+- 📧 Email: [sergio.hidalgo10@inacapmail.cl]
 
 ### **🤝 Colaboraciones**
 ¿Interesado en contribuir? ¡Todas las contribuciones son bienvenidas!
