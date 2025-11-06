@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/dashboardFragment">
+
+    <!-- 📱 Dashboard Fragment - Pantalla principal -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.ti3042.airmonitor.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        
+        <action
+            android:id="@+id/action_dashboard_to_gasAnalysis"
+            app:destination="@id/gasAnalysisFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+            
+        <action
+            android:id="@+id/action_dashboard_to_settings"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+            
+        <action
+            android:id="@+id/action_dashboard_to_history"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <!-- 🔬 Gas Analysis Fragment -->
+    <fragment
+        android:id="@+id/gasAnalysisFragment"
+        android:name="com.ti3042.airmonitor.ui.gas.GasAnalysisFragment"
+        android:label="Análisis de Gases"
+        tools:layout="@layout/fragment_gas_analysis">
+        
+        <action
+            android:id="@+id/action_gasAnalysis_back"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment" />
+    </fragment>
+
+    <!-- ⚙️ Settings Fragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ti3042.airmonitor.ui.settings.SettingsFragment"
+        android:label="Configuración"
+        tools:layout="@layout/fragment_settings">
+        
+        <action
+            android:id="@+id/action_settings_back"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment" />
+    </fragment>
+
+    <!-- 📊 History Fragment -->
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.ti3042.airmonitor.ui.history.HistoryFragment"
+        android:label="Historial"
+        tools:layout="@layout/fragment_history">
+        
+        <action
+            android:id="@+id/action_history_back"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment" />
+    </fragment>
+
+    <!-- 🔧 Control Fragment -->
+    <fragment
+        android:id="@+id/controlFragment"
+        android:name="com.ti3042.airmonitor.ui.control.ControlFragment"
+        android:label="Control del Sistema"
+        tools:layout="@layout/fragment_control">
+        
+        <action
+            android:id="@+id/action_control_back"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment" />
+    </fragment>
+
+</navigation>

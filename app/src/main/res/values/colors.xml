@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- 🎨 Modern Natural Colors - Teal/Blue Theme -->
+    <color name="primary">#2E7D8A</color>           <!-- Ocean Teal - Main brand -->
+    <color name="primary_variant">#1F5459</color>   <!-- Darker teal -->
+    <color name="primary_light">#5BA8B8</color>     <!-- Lighter teal -->
+    <color name="primary_50">#E0F2F1</color>        <!-- Very light teal -->
+    <color name="primary_100">#B2DFDB</color>       <!-- Light teal -->
+    <color name="primary_200">#80CBC4</color>       <!-- Medium light teal -->
+    
+    <!-- 🌿 Secondary Colors - Warm Accent -->
+    <color name="secondary">#FF7043</color>         <!-- Warm Orange - Control elements -->
+    <color name="secondary_variant">#D84315</color> <!-- Dark orange -->
+    <color name="secondary_light">#FFAB91</color>   <!-- Light orange -->
+    
+    <!-- 💜 Tertiary Colors - Accent -->
+    <color name="tertiary">#9C27B0</color>          <!-- Purple - Tertiary accent -->
+    <color name="tertiary_variant">#673AB7</color>  <!-- Dark purple -->
+    <color name="tertiary_light">#E1BEE7</color>    <!-- Light purple -->
+    
+    <!-- 📱 Modern Surface & Background -->
+    <color name="background">#F1F5F4</color>        <!-- Soft gray-green background -->
+    <color name="surface">#FFFFFF</color>           <!-- Card surface -->
+    <color name="surface_variant">#F8FFFE</color>   <!-- Subtle surface variant -->
+    
+    <!-- 🎨 New Header & UI Colors -->
+    <color name="header_background">#2E7D8A</color>        <!-- Header card background -->
+    <color name="header_text_primary">#FFFFFF</color>      <!-- Header primary text -->
+    <color name="header_text_secondary">#B2DFDB</color>    <!-- Header secondary text -->
+    <color name="button_background">#FFFFFF20</color>      <!-- Button background with alpha -->
+    
+    <!-- 📝 Text Colors -->
+    <color name="text_primary">#212121</color>      <!-- Primary text -->
+    <color name="text_secondary">#757575</color>    <!-- Secondary text -->
+    <color name="text_hint">#BDBDBD</color>         <!-- Hint text -->
+    <color name="text_disabled">#9E9E9E</color>     <!-- Disabled text -->
+    
+    <!-- Material Design On-Colors -->
+    <color name="on_primary">#FFFFFF</color>        <!-- Text on primary -->
+    <color name="on_secondary">#FFFFFF</color>      <!-- Text on secondary -->
+    <color name="on_background">#212121</color>     <!-- Text on background -->
+    <color name="on_surface">#212121</color>        <!-- Text on surface -->
+    <color name="on_error">#FFFFFF</color>          <!-- Text on error -->
+    
+    <!-- 🌡️ Air Quality Status Colors -->
+    <color name="air_quality_good">#4CAF50</color>      <!-- Verde - Buena -->
+    <color name="air_quality_moderate">#FF9800</color>   <!-- Naranja - Moderada -->
+    <color name="air_quality_poor">#FF5722</color>       <!-- Rojo oscuro - Mala -->
+    <color name="air_quality_critical">#F44336</color>   <!-- Rojo - Crítica -->
+    
+    <!-- 🔗 Connection Status Colors -->
+    <color name="status_connected">#4CAF50</color>      <!-- Verde - Conectado -->
+    <color name="status_disconnected">#F44336</color>   <!-- Rojo - Desconectado -->
+    <color name="status_connecting">#FF9800</color>     <!-- Naranja - Conectando -->
+    <color name="status_simulation">#2196F3</color>     <!-- Azul - Simulación -->
+    
+    <!-- 📍 Indicator Colors -->
+    <color name="indicator_connected">#4CAF50</color>     <!-- Verde - Conectado -->
+    <color name="indicator_disconnected">#F44336</color> <!-- Rojo - Desconectado -->
+    <color name="indicator_simulation">#2196F3</color>   <!-- Azul - Simulación -->
+    
+    <!-- 🎛️ Control Colors -->
+    <color name="control_active">#4CAF50</color>        <!-- Verde - Activo -->
+    <color name="control_inactive">#9E9E9E</color>      <!-- Gris - Inactivo -->
+    <color name="control_warning">#FF9800</color>       <!-- Naranja - Advertencia -->
+    <color name="control_alert">#F44336</color>         <!-- Rojo - Alerta -->
+    
+    <!-- 📊 Gas Composition Colors -->
+    <color name="gas_oxygen">#4CAF50</color>            <!-- Verde - Oxígeno -->
+    <color name="gas_co2">#FF9800</color>               <!-- Naranja - CO2 -->
+    <color name="gas_smoke">#FF5722</color>             <!-- Rojo - Humo -->
+    <color name="gas_vapor">#2196F3</color>             <!-- Azul - Vapor -->
+    <color name="gas_others">#9C27B0</color>            <!-- Púrpura - Otros -->
+    <color name="gas_bar_background">#E0E0E0</color>    <!-- Fondo de barras -->
+    
+    <!-- 🔔 Notification Colors -->
+    <color name="notification_success">#4CAF50</color>   <!-- Verde - Éxito -->
+    <color name="notification_warning">#FF9800</color>   <!-- Naranja - Advertencia -->
+    <color name="notification_error">#F44336</color>     <!-- Rojo - Error -->
+    <color name="notification_info">#2196F3</color>      <!-- Azul - Info -->
+    
+    <!-- 🎨 Card Colors with Alpha -->
+    <color name="card_success_bg">#4CAF5020</color>      <!-- Verde con alpha -->
+    <color name="card_warning_bg">#FF980020</color>      <!-- Naranja con alpha -->
+    <color name="card_error_bg">#F4433620</color>        <!-- Rojo con alpha -->
+    <color name="card_info_bg">#2196F320</color>         <!-- Azul con alpha -->
+    <color name="card_primary_bg">#673AB720</color>      <!-- Púrpura con alpha -->
+    
+    <!-- 🔲 Border Colors -->
+    <color name="border_light">#E0E0E0</color>           <!-- Borde claro -->
+    <color name="border_medium">#BDBDBD</color>          <!-- Borde medio -->
+    <color name="border_dark">#757575</color>            <!-- Borde oscuro -->
+    
+    <!-- Standard Material Design Colors -->
+    <color name="error">#F44336</color>                  <!-- Error standard -->
+    
+    <!-- Additional teal shades for gas analysis -->
+    <color name="teal_50">#E0F2F1</color>
+    <color name="teal_500">#009688</color>
+    
+    <!-- 🌙 Support for Dark Theme (Future) -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#B3FFFFFF</color>
+</resources>

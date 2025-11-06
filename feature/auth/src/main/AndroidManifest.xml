@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!-- 🔐 Activity de autenticación -->
+        <activity
+            android:name=".AuthActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            
+            <!-- Intent filter para ser launcher desde otros módulos -->
+            <intent-filter android:priority="1">
+                <action android:name="com.ti3042.airmonitor.AUTH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

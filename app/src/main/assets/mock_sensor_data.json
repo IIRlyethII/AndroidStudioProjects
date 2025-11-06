@@ -1,0 +1,178 @@
+[
+  {
+    "timestamp": "2024-11-04T12:00:00Z",
+    "airQuality": {
+      "ppm": 145,
+      "level": "buena",
+      "temperature": 23.5,
+      "humidity": 62
+    },
+    "gasComposition": {
+      "oxygen": 78,
+      "co2": 15,
+      "smoke": 3,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": false,
+      "autoMode": true,
+      "uptime": 7500
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:02:00Z",
+    "airQuality": {
+      "ppm": 187,
+      "level": "moderada",
+      "temperature": 24.1,
+      "humidity": 58
+    },
+    "gasComposition": {
+      "oxygen": 72,
+      "co2": 20,
+      "smoke": 4,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": false,
+      "autoMode": true,
+      "uptime": 7620
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:04:00Z",
+    "airQuality": {
+      "ppm": 234,
+      "level": "moderada",
+      "temperature": 24.8,
+      "humidity": 54
+    },
+    "gasComposition": {
+      "oxygen": 68,
+      "co2": 25,
+      "smoke": 3,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": true,
+      "autoMode": true,
+      "uptime": 7740
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:06:00Z",
+    "airQuality": {
+      "ppm": 312,
+      "level": "mala",
+      "temperature": 25.2,
+      "humidity": 51
+    },
+    "gasComposition": {
+      "oxygen": 65,
+      "co2": 28,
+      "smoke": 4,
+      "vapor": 2,
+      "others": 1
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": true,
+      "autoMode": true,
+      "uptime": 7860
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:08:00Z",
+    "airQuality": {
+      "ppm": 421,
+      "level": "critica",
+      "temperature": 26.1,
+      "humidity": 48
+    },
+    "gasComposition": {
+      "oxygen": 62,
+      "co2": 30,
+      "smoke": 5,
+      "vapor": 2,
+      "others": 1
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": true,
+      "autoMode": true,
+      "uptime": 7980
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:10:00Z",
+    "airQuality": {
+      "ppm": 198,
+      "level": "moderada",
+      "temperature": 24.9,
+      "humidity": 55
+    },
+    "gasComposition": {
+      "oxygen": 70,
+      "co2": 22,
+      "smoke": 4,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": false,
+      "autoMode": true,
+      "uptime": 8100
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:12:00Z",
+    "airQuality": {
+      "ppm": 156,
+      "level": "buena",
+      "temperature": 24.2,
+      "humidity": 59
+    },
+    "gasComposition": {
+      "oxygen": 75,
+      "co2": 18,
+      "smoke": 3,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": true,
+      "buzzerActive": false,
+      "autoMode": true,
+      "uptime": 8220
+    }
+  },
+  {
+    "timestamp": "2024-11-04T12:14:00Z",
+    "airQuality": {
+      "ppm": 134,
+      "level": "buena",
+      "temperature": 23.7,
+      "humidity": 63
+    },
+    "gasComposition": {
+      "oxygen": 77,
+      "co2": 16,
+      "smoke": 3,
+      "vapor": 2,
+      "others": 2
+    },
+    "systemStatus": {
+      "fanStatus": false,
+      "buzzerActive": false,
+      "autoMode": true,
+      "uptime": 8340
+    }
+  }
+]

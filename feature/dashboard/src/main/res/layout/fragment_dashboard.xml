@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 🎨 Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.AirMonitor.CardView"
+            app:cardBackgroundColor="@color/header_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌱 Monitor Calidad del Aire"
+                    android:textColor="@color/header_text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvConnectionStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔄 Conectando..."
+                    android:textColor="@color/header_text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 📊 Main Data Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- PPM Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_air_quality"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.AirMonitor.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CALIDAD AIRE"
+                        style="@style/TextAppearance.AirMonitor.Caption" />
+
+                    <TextView
+                        android:id="@+id/tvPPM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 PPM"
+                        style="@style/TextAppearance.AirMonitor.PPMValue"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvAirLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BUENA"
+                        style="@style/TextAppearance.AirMonitor.Headline"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Temperature & Humidity Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_temperature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                style="@style/Widget.AirMonitor.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AMBIENTE"
+                        style="@style/TextAppearance.AirMonitor.Caption" />
+
+                    <TextView
+                        android:id="@+id/tvTemperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0°C"
+                        style="@style/TextAppearance.AirMonitor.Headline"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvHumidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%"
+                        style="@style/TextAppearance.AirMonitor.Body"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- 🎛️ Control Panel -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.AirMonitor.CardView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎛️ PANEL DE CONTROL"
+                    style="@style/TextAppearance.AirMonitor.Caption"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Auto Mode Switch -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🤖 Modo Automático"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchAutoMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+
+                </LinearLayout>
+
+                <!-- Fan Control -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🌪️ Ventilador"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <TextView
+                        android:id="@+id/tvFanStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OFF"
+                        style="@style/TextAppearance.AirMonitor.Caption"
+                        android:layout_marginEnd="8dp" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchFan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <!-- Alert Control -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🚨 Alerta Sonora"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <TextView
+                        android:id="@+id/tvBuzzerStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OFF"
+                        style="@style/TextAppearance.AirMonitor.Caption"
+                        android:layout_marginEnd="8dp" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchAlert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 📊 Gas Composition -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.AirMonitor.CardView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🧪 COMPOSICIÓN DE GASES"
+                    style="@style/TextAppearance.AirMonitor.Caption"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Oxygen -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="O₂"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="78"
+                        android:progressTint="@color/gas_oxygen" />
+
+                    <TextView
+                        android:id="@+id/tvGasOxygenValue"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="78%"
+                        android:gravity="end"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                </LinearLayout>
+
+                <!-- CO2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="CO₂"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="15"
+                        android:progressTint="@color/gas_co2" />
+
+                    <TextView
+                        android:id="@+id/tvGasCo2Value"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="15%"
+                        android:gravity="end"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                </LinearLayout>
+
+                <!-- Smoke -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Humo"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="3"
+                        android:progressTint="@color/gas_smoke" />
+
+                    <TextView
+                        android:id="@+id/tvGasSmokeValue"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="3%"
+                        android:gravity="end"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                </LinearLayout>
+
+                <!-- Vapor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Vapor"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="2"
+                        android:progressTint="@color/gas_vapor" />
+
+                    <TextView
+                        android:id="@+id/tvGasVaporValue"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="2%"
+                        android:gravity="end"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                </LinearLayout>
+
+                <!-- Others -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Otros"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                    <ProgressBar
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="2"
+                        android:progressTint="@color/gas_others" />
+
+                    <TextView
+                        android:id="@+id/tvGasOthersValue"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="2%"
+                        android:gravity="end"
+                        style="@style/TextAppearance.AirMonitor.Body" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 📱 Navigation Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGasAnalysis"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="🧪 Análisis"
+                style="@style/Widget.AirMonitor.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHistory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:text="📊 Historial"
+                style="@style/Widget.AirMonitor.Button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="⚙️ Config"
+                style="@style/Widget.AirMonitor.Button" />
+
+        </LinearLayout>
+
+        <!-- 📈 Status Info -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AirMonitor.CardView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📈 INFORMACIÓN DEL SISTEMA"
+                    style="@style/TextAppearance.AirMonitor.Caption"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvUptime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sistema operativo - 00:00:00"
+                    style="@style/TextAppearance.AirMonitor.Body" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,251 @@
+package com.ti3042.airmonitor.ui.auth
+
+import android.util.Log
+import android.util.Patterns
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
+import com.ti3042.airmonitor.data.repository.AuthRepository
+import kotlinx.coroutines.launch
+
+/**
+ * 🧠 ViewModel para la pantalla de autenticación
+ * Implementa patrón MVVM para separar la lógica de negocio de la UI
+ */
+class AuthViewModel : ViewModel() {
+    
+    private val authRepository = AuthRepository()
+    private val tag = "AuthViewModel"
+    
+    // Estado de carga
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+    
+    // Estado de autenticación exitosa
+    private val _authSuccess = MutableLiveData<FirebaseUser>()
+    val authSuccess: LiveData<FirebaseUser> = _authSuccess
+    
+    // Mensajes de error
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
+    
+    // Mensajes de éxito
+    private val _successMessage = MutableLiveData<String>()
+    val successMessage: LiveData<String> = _successMessage
+    
+    // Estado de validación de formulario
+    private val _emailError = MutableLiveData<String?>()
+    val emailError: LiveData<String?> = _emailError
+    
+    private val _passwordError = MutableLiveData<String?>()
+    val passwordError: LiveData<String?> = _passwordError
+    
+    /**
+     * Verifica si el usuario ya está autenticado
+     * @return Boolean - true si está autenticado
+     */
+    fun isUserAuthenticated(): Boolean {
+        return authRepository.isUserAuthenticated()
+    }
+    
+    /**
+     * Obtiene el usuario actual
+     * @return FirebaseUser? - Usuario actual o null
+     */
+    fun getCurrentUser(): FirebaseUser? {
+        return authRepository.getCurrentUser()
+    }
+    
+    /**
+     * Valida los datos de entrada del formulario
+     * @param email String - Email a validar
+     * @param password String - Contraseña a validar
+     * @return Boolean - true si los datos son válidos
+     */
+    fun validateInput(email: String, password: String): Boolean {
+        var isValid = true
+        
+        // Validar email
+        when {
+            email.isEmpty() -> {
+                _emailError.value = "Email es requerido"
+                isValid = false
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                _emailError.value = "Ingrese un email válido"
+                isValid = false
+            }
+            else -> {
+                _emailError.value = null
+            }
+        }
+        
+        // Validar contraseña
+        when {
+            password.isEmpty() -> {
+                _passwordError.value = "Contraseña es requerida"
+                isValid = false
+            }
+            password.length < 6 -> {
+                _passwordError.value = "Contraseña debe tener al menos 6 caracteres"
+                isValid = false
+            }
+            else -> {
+                _passwordError.value = null
+            }
+        }
+        
+        return isValid
+    }
+    
+    /**
+     * Inicia sesión con email y contraseña
+     * @param email String - Email del usuario
+     * @param password String - Contraseña del usuario
+     */
+    fun signIn(email: String, password: String) {
+        if (!validateInput(email.trim(), password.trim())) {
+            return
+        }
+        
+        _isLoading.value = true
+        Log.d(tag, "🔐 Starting sign in process")
+        
+        viewModelScope.launch {
+            try {
+                val result = authRepository.signInWithEmailAndPassword(email.trim(), password.trim())
+                
+                result.fold(
+                    onSuccess = { user ->
+                        _isLoading.value = false
+                        _authSuccess.value = user
+                        _successMessage.value = "Bienvenido ${user.email}"
+                        Log.d(tag, "✅ Sign in successful")
+                    },
+                    onFailure = { exception ->
+                        _isLoading.value = false
+                        val errorMsg = getFirebaseErrorMessage(exception)
+                        _errorMessage.value = errorMsg
+                        Log.w(tag, "❌ Sign in failed: ${exception.message}")
+                    }
+                )
+            } catch (e: Exception) {
+                _isLoading.value = false
+                _errorMessage.value = "Error inesperado: ${e.message}"
+                Log.e(tag, "💥 Unexpected error during sign in", e)
+            }
+        }
+    }
+    
+    /**
+     * Registra un nuevo usuario con email y contraseña
+     * @param email String - Email del nuevo usuario
+     * @param password String - Contraseña del nuevo usuario
+     */
+    fun signUp(email: String, password: String) {
+        if (!validateInput(email.trim(), password.trim())) {
+            return
+        }
+        
+        _isLoading.value = true
+        Log.d(tag, "📝 Starting sign up process")
+        
+        viewModelScope.launch {
+            try {
+                val result = authRepository.createUserWithEmailAndPassword(email.trim(), password.trim())
+                
+                result.fold(
+                    onSuccess = { user ->
+                        _isLoading.value = false
+                        _authSuccess.value = user
+                        _successMessage.value = "Cuenta creada exitosamente para ${user.email}"
+                        Log.d(tag, "✅ Sign up successful")
+                    },
+                    onFailure = { exception ->
+                        _isLoading.value = false
+                        val errorMsg = getFirebaseErrorMessage(exception)
+                        _errorMessage.value = errorMsg
+                        Log.w(tag, "❌ Sign up failed: ${exception.message}")
+                    }
+                )
+            } catch (e: Exception) {
+                _isLoading.value = false
+                _errorMessage.value = "Error inesperado: ${e.message}"
+                Log.e(tag, "💥 Unexpected error during sign up", e)
+            }
+        }
+    }
+    
+    /**
+     * Envía email de recuperación de contraseña
+     * @param email String - Email al cual enviar la recuperación
+     */
+    fun sendPasswordReset(email: String) {
+        if (email.isEmpty()) {
+            _emailError.value = "Ingrese su email para recuperar la contraseña"
+            return
+        }
+        
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _emailError.value = "Ingrese un email válido"
+            return
+        }
+        
+        _isLoading.value = true
+        
+        viewModelScope.launch {
+            try {
+                val result = authRepository.sendPasswordResetEmail(email.trim())
+                
+                result.fold(
+                    onSuccess = {
+                        _isLoading.value = false
+                        _successMessage.value = "Email de recuperación enviado a $email"
+                    },
+                    onFailure = { exception ->
+                        _isLoading.value = false
+                        _errorMessage.value = "Error al enviar email: ${exception.message}"
+                    }
+                )
+            } catch (e: Exception) {
+                _isLoading.value = false
+                _errorMessage.value = "Error inesperado: ${e.message}"
+            }
+        }
+    }
+    
+    /**
+     * Convierte excepciones de Firebase en mensajes amigables
+     * @param exception Throwable - Excepción de Firebase
+     * @return String - Mensaje de error amigable
+     */
+    private fun getFirebaseErrorMessage(exception: Throwable): String {
+        return when {
+            exception.message?.contains("password is invalid") == true -> 
+                "Contraseña incorrecta"
+            exception.message?.contains("no user record") == true -> 
+                "No existe una cuenta con este email"
+            exception.message?.contains("email address is already in use") == true -> 
+                "Ya existe una cuenta con este email"
+            exception.message?.contains("badly formatted") == true -> 
+                "El formato del email no es válido"
+            exception.message?.contains("weak-password") == true -> 
+                "La contraseña es muy débil"
+            exception.message?.contains("network error") == true -> 
+                "Error de conexión. Verifique su internet"
+            else -> "Error de autenticación: ${exception.message}"
+        }
+    }
+    
+    /**
+     * Limpia los mensajes de error
+     */
+    fun clearErrors() {
+        _emailError.value = null
+        _passwordError.value = null
+        _errorMessage.value = ""
+        _successMessage.value = ""
+    }
+}

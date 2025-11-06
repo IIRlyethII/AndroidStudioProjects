@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "author": "TI3042 - ESP32 Air Quality Monitor",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -67.6,
+      "left": 182.3,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ssd1306",
+      "id": "oled1",
+      "top": -128.15,
+      "left": 356.65,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 25.2,
+      "left": 201.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": -76.8,
+      "left": 297.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 86.4,
+      "left": 182.3,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 115.2,
+      "left": 134.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq135",
+      "top": 134.4,
+      "left": 297.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ads1115",
+      "id": "ads1",
+      "top": 48,
+      "left": 374.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "dht1:GND", "black", [ "h0" ] ],
+    [ "esp:3V3", "dht1:VCC", "red", [ "h0" ] ],
+    [ "esp:D4", "dht1:SDA", "green", [ "h0" ] ],
+    [ "esp:GND.1", "oled1:GND", "black", [ "h0" ] ],
+    [ "esp:3V3", "oled1:VCC", "red", [ "h0" ] ],
+    [ "esp:D21", "oled1:SDA", "blue", [ "h0" ] ],
+    [ "esp:D22", "oled1:SCL", "yellow", [ "h0" ] ],
+    [ "esp:GND.1", "bz1:-", "black", [ "h0" ] ],
+    [ "esp:D5", "bz1:+", "green", [ "h0" ] ],
+    [ "esp:GND.1", "relay1:GND", "black", [ "h0" ] ],
+    [ "esp:VIN", "relay1:VCC", "red", [ "h0" ] ],
+    [ "esp:D2", "relay1:IN", "orange", [ "h0" ] ],
+    [ "esp:D18", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "led1:A", "green", [ "h0" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "h0" ] ],
+    [ "esp:3V3", "ads1:VDD", "red", [ "h0" ] ],
+    [ "esp:GND.1", "ads1:GND", "black", [ "h0" ] ],
+    [ "esp:D21", "ads1:SDA", "blue", [ "h0" ] ],
+    [ "esp:D22", "ads1:SCL", "yellow", [ "h0" ] ],
+    [ "mq135:VCC", "esp:VIN", "red", [ "h0" ] ],
+    [ "mq135:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "mq135:A0", "ads1:A0", "purple", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

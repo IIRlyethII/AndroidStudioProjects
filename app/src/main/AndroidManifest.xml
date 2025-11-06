@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 🔔 Permisos para Notificaciones -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- 📡 Permisos Bluetooth (para conexión ESP32) -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- 🌐 Permisos Internet (para Firebase) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- 📡 Permisos WiFi P2P (para multi-dispositivo) -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <!-- 🔒 Permisos de seguridad adicionales -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".AirQualityApplication"
+        android:allowBackup="true"
+        android:label="🌬️ Air Monitor TI3042"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- � Launcher Activity - Punto de entrada principal -->
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+        <!-- 🔐 Auth Activity se declara automáticamente desde :feature:auth -->
+
+        <!-- 🔐 Login Activity (legacy - será removida) -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 📱 Main Activity - Dashboard principal -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- 🔧 Control System Activity - Sistema de control avanzado -->
+        <activity
+            android:name=".ui.control.ControlSystemActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- 🔄 Simple Data Sync Service - Sincronización automática con Firebase -->
+        <service
+            android:name=".services.SimpleDataSyncService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- 🔥 Firebase Data Service - Servicio simplificado de Firebase -->
+        <service
+            android:name=".services.FirebaseDataService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- 🧪 ESP32 Testing Activity - Actividad de pruebas con hardware (temporalmente deshabilitada) -->
+        <!--
+        <activity
+            android:name=".testing.ESP32TestingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="ESP32 Testing Lab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        -->
+
+        <!-- ⚙️ Auth Settings Activity - Configuración de sesión persistente (temporalmente deshabilitada) -->
+        <!--
+        <activity
+            android:name=".ui.settings.AuthSettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Configuración de Sesión"
+            android:parentActivityName=".MainActivity" />
+        -->
+
+    </application>
+</manifest>

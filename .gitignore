@@ -1,0 +1,67 @@
+# 🚀 Air Quality Monitor TI3042 - GitIgnore
+
+# 🏗️ Built application files
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+
+# 📦 Generated files
+bin/
+gen/
+out/
+build/
+
+# 🎯 Gradle files
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# 📱 Local configuration file
+local.properties
+
+# 🔌 Android Studio
+*.iml
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/dictionaries
+/.idea/gradle.xml
+/.idea/tasks.xml
+
+# 📊 Captures and profiling
+/captures
+.externalNativeBuild
+.cxx
+*.hprof
+
+# 💻 OS files
+.DS_Store
+Thumbs.db
+
+# 📝 Log files
+*.log
+
+# 🔥 Firebase config (mantener para funcionalidad)
+# google-services.json - NO excluir, necesario para Firebase
+
+# 🎨 Archivos temporalmente deshabilitados
+**/*.disabled
+**/*.kt.disabled
+
+# 🔐 Configuración sensible (si existiera)
+keystore.properties
+release.properties
+
+# 🧪 Testing outputs
+/androidTest/build
+/test/build
+lint/
+
+# 🔄 Backup files
+*~
+*.swp
+*.bak

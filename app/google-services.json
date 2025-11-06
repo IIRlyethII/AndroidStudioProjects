@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "875595832879",
+    "firebase_url": "https://esp32-878b6-default-rtdb.firebaseio.com",
+    "project_id": "esp32-878b6",
+    "storage_bucket": "esp32-878b6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875595832879:android:52be10b0eb78b3a95730da",
+        "android_client_info": {
+          "package_name": "com.ti3042.airmonitor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjVtk2AbW0SasGQF3Fawedj2FEyOQk3R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

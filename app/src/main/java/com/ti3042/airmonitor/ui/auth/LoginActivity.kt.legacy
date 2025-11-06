@@ -1,0 +1,162 @@
+package com.ti3042.airmonitor.ui.auth
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import com.ti3042.airmonitor.MainActivity
+import com.ti3042.airmonitor.databinding.ActivityLoginBinding
+
+class LoginActivity : AppCompatActivity() {
+
+    private val tag = "LoginActivity"
+    private lateinit var binding: ActivityLoginBinding
+    private val authViewModel: AuthViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Inicializar View Binding
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
+        // Verificar si el usuario ya está autenticado
+        if (authViewModel.isUserAuthenticated()) {
+            Log.d(tag, "✅ User already authenticated, navigating to main")
+            navigateToMain()
+            return
+        }
+        
+        setupClickListeners()
+        observeViewModel()
+    }
+    
+    private fun setupClickListeners() {
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            
+            // Limpiar errores previos
+            authViewModel.clearErrors()
+            
+            // Intentar login a través del ViewModel
+            authViewModel.signIn(email, password)
+        }
+        
+        binding.btnRegister.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            
+            // Limpiar errores previos
+            authViewModel.clearErrors()
+            
+            // Intentar registro a través del ViewModel
+            authViewModel.signUp(email, password)
+        }
+    }
+    
+    /**
+     * 👀 Observa los cambios en el ViewModel y actualiza la UI
+     */
+    private fun observeViewModel() {
+        // Observar estado de carga
+        authViewModel.isLoading.observe(this) { isLoading ->
+            showLoading(isLoading)
+        }
+        
+        // Observar autenticación exitosa
+        authViewModel.authSuccess.observe(this) { user ->
+            Log.d(tag, "✅ Authentication successful for: ${user.email}")
+            navigateToMain()
+        }
+        
+        // Observar errores de email
+        authViewModel.emailError.observe(this) { error ->
+            binding.etEmail.error = error
+        }
+        
+        // Observar errores de contraseña
+        authViewModel.passwordError.observe(this) { error ->
+            binding.etPassword.error = error
+        }
+        
+        // Observar mensajes de error generales
+        authViewModel.errorMessage.observe(this) { message ->
+            if (message.isNotEmpty()) {
+                showSnackbar(message, isError = true)
+            }
+        }
+        
+        // Observar mensajes de éxito
+        authViewModel.successMessage.observe(this) { message ->
+            if (message.isNotEmpty()) {
+                showSnackbar(message, isError = false)
+            }
+        }
+    }
+
+
+    
+    /**
+     * 📱 Navega a la pantalla principal usando Navigation Component mejorado
+     */
+    private fun navigateToMain() {
+        Log.d(tag, "🚀 Navigating to MainActivity with enhanced navigation")
+        
+        val extras = mapOf(
+            "auth_source" to "login_activity",
+            "user_email" to (authViewModel.getCurrentUser()?.email ?: "unknown"),
+            "auth_timestamp" to System.currentTimeMillis().toString()
+        )
+        
+        // Usar NavigationHelper del módulo :core:common
+        com.ti3042.airmonitor.core.common.navigation.NavigationHelper.navigateToActivity(
+            context = this,
+            targetActivity = MainActivity::class.java,
+            clearStack = true,
+            extras = extras,
+            enterAnim = com.ti3042.airmonitor.core.common.navigation.NavigationHelper.Animations.FADE_IN,
+            exitAnim = com.ti3042.airmonitor.core.common.navigation.NavigationHelper.Animations.FADE_OUT
+        )
+        
+        // Log navigation for analytics
+        com.ti3042.airmonitor.core.common.navigation.NavigationHelper.logNavigation(
+            from = "LoginActivity",
+            to = "MainActivity",
+            method = "authentication_success"
+        )
+        
+        finish()
+    }
+    
+    /**
+     * ⏳ Muestra u oculta el estado de carga
+     */
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        binding.btnLogin.isEnabled = !show
+        binding.btnRegister.isEnabled = !show
+        binding.etEmail.isEnabled = !show
+        binding.etPassword.isEnabled = !show
+    }
+    
+    /**
+     * 📢 Muestra un Snackbar con el mensaje (mejor UX que Toast)
+     */
+    private fun showSnackbar(message: String, isError: Boolean) {
+        val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+        
+        if (isError) {
+            snackbar.setBackgroundTint(getColor(android.R.color.holo_red_light))
+            snackbar.setTextColor(getColor(android.R.color.white))
+        } else {
+            snackbar.setBackgroundTint(getColor(android.R.color.holo_green_light))
+            snackbar.setTextColor(getColor(android.R.color.white))
+        }
+        
+        snackbar.show()
+    }
+}
